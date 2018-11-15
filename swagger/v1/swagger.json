@@ -1,0 +1,127 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/users/sign_in": {
+      "post": {
+        "summary": "login",
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authentication",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "authenticated"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
+    "/api/v1/users/sign_out": {
+      "delete": {
+        "summary": "logout",
+        "tags": [
+          "users"
+        ],
+        "security": [
+          {
+            "bearer": [
+
+            ]
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "201": {
+            "description": "authenticated"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
+    "/api/v1/users": {
+      "post": {
+        "summary": "signup",
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "signup",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    },
+                    "password_confirmation": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "authenticated"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    }
+  }
+}
