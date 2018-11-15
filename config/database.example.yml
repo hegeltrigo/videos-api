@@ -1,0 +1,21 @@
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: your_password
+
+development:
+  <<: *default
+  database: videos_development
+
+test:
+  <<: *default
+  database: videos_test
+
+production:
+  <<: *default
+  database: videos_production
+  username: root
+  password: <%= ENV['videos_DATABASE_PASSWORD'] %>
