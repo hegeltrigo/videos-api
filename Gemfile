@@ -10,6 +10,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise-jwt'
 gem 'rswag'
 gem 'rspec-rails', '~> 3.5'
+gem 'rack-cors', :require => 'rack/cors'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

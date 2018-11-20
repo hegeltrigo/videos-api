@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_021042) do
+ActiveRecord::Schema.define(version: 2018_11_20_032425) do
 
   create_table "jwt_blacklist", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "jti", null: false
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 2018_11_15_021042) do
 
   create_table "videos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
-    t.text "description"
-    t.text "video_code"
-    t.bigint "user_id"
+    t.string "description"
     t.string "youtube_video_id"
+    t.string "video_code"
+    t.bigint "user_id"
     t.datetime "upload_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
