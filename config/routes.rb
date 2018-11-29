@@ -9,7 +9,11 @@ Rails.application.routes.draw do
                      :registrations => "api/v1/registrations",
                      :sessions => "api/v1/sessions"
                  }
-      resources :videos
+      resources :videos do
+        collection do
+          get :my_videos
+        end  
+      end  
            
       end
 

@@ -4,6 +4,13 @@
     "title": "API V1",
     "version": "v1"
   },
+  "securityDefinitions": {
+    "bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
   "paths": {
     "/api/v1/users/sign_in": {
       "post": {
@@ -125,7 +132,7 @@
     },
     "/api/v1/videos": {
       "post": {
-        "summary": "Creates a job",
+        "summary": "Creates a video",
         "tags": [
           "videos"
         ],
@@ -152,11 +159,15 @@
                 },
                 "description": {
                   "type": "string"
+                },
+                "video_url": {
+                  "type": "string"
                 }
               },
               "required": [
                 "title",
-                "description"
+                "description",
+                "video_url"
               ]
             }
           }
@@ -172,6 +183,26 @@
       },
       "get": {
         "summary": "get all videos",
+        "tags": [
+          "videos"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "201": {
+            "description": "get all videos"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
+    "/api/v1/videos/my_videos": {
+      "get": {
+        "summary": "get all  my videos",
         "tags": [
           "videos"
         ],

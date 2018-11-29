@@ -5,7 +5,7 @@ describe 'videos API' do
 
   path '/api/v1/videos' do
 
-    post 'Creates a job' do
+    post 'Creates a video' do
       tags 'videos'
       security [ bearer: [] ]
 
@@ -14,13 +14,14 @@ describe 'videos API' do
         type: :object,
         properties: {
           title: { type: :string },
-          description: { type: :string }
+          description: { type: :string },
+          video_url: {type: :string}
         },
-        required: [ 'title', 'description' ]
+        required: [ 'title', 'description', 'video_url' ]
       }
 
       response '201', 'job created' do
-        let(:job) { { title: 'Dodo', description: 'available' } }
+        let(:job) { { title: 'Dodo', description: 'available', video_ur: 'http://www.youtube.com/watch?v=RCUkmUXMd_k' } }
         run_test!
       end
 
@@ -31,6 +32,24 @@ describe 'videos API' do
     end
 
     get 'get all videos' do
+      tags 'videos'
+      consumes 'application/json', 'application/xml'
+      # let(:"Authorization") { "Bearer #{token_for(user)}" }
+
+      response '201', 'get all videos' do
+        run_test!
+      end
+
+      response '422', 'invalid request' do
+        run_test!
+      end
+    end
+  end
+
+
+  path '/api/v1/videos/my_videos' do
+
+    get 'get all  my videos' do
       tags 'videos'
       security [ bearer: [] ]
       consumes 'application/json', 'application/xml'
@@ -45,6 +64,8 @@ describe 'videos API' do
       end
     end
   end
+
+
 
   path '/api/v1/videos/{id}' do
 

@@ -11,6 +11,8 @@ gem 'devise-jwt'
 gem 'rswag'
 gem 'rspec-rails', '~> 3.5'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'youtube_id'
+
 
 
 group :development, :test do

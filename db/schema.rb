@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_032425) do
+ActiveRecord::Schema.define(version: 2018_11_28_205752) do
 
   create_table "jwt_blacklist", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "jti", null: false
+    t.datetime "exp", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["jti"], name: "index_jwt_blacklist_on_jti"
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_032425) do
     t.datetime "upload_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "video_url"
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
