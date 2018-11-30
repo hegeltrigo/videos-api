@@ -44,7 +44,11 @@ class Api::V1::VideosController < ApplicationController
 
   # DELETE /videos/1
   def destroy
-    @video.destroy
+    if @video.destroy
+      render json: @video
+    else
+      render json: @video.errors, status: :unprocessable_entity
+    end    
   end
 
   private
